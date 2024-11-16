@@ -1,0 +1,47 @@
+main div.form-group{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: opensans;
+    width: fit-content;
+    margin-top: -15em;
+}
+
+main div.form-group h2{
+}
+
+main div.form-group div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    column-gap: 2em;
+    margin-top: 2em;
+}
+
+main div.form-group div div{
+    display: flex;
+    flex-direction: column;
+}
+
+main div.form-group div div label{
+    margin-top: 0.8em;
+}
+
+main div.form-group div div input[type=radio]{
+    margin: 0;
+}
+
+main div.form-group input[type=button]{
+    background-color: #F59A06FF;
+    padding: 0.2em 0.5em;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 5px 5px 10px #00000044;
+    margin: 3em auto 0 auto ;
+    font-size: 20pt;
+}
+
+main div.form-group input[type=button]:hover{
+    cursor: pointer;
+    background-color: #F59A06AA;
+}

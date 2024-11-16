@@ -7,3 +7,8 @@
     font-family: DM;
     src: url(../fonts/DM_Serif_Display/DMSerifDisplay-Regular.ttf);
 }
+
+@font-face {
+    font-family: opensans;
+    src: url(../fonts//Open_Sans/static/OpenSans-Light.ttf);
+}

@@ -1,0 +1,36 @@
+@font-face{
+    font-family: custom;
+    src: url(../../../fonts/classica_3/Classica-Bold.ttf);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p{
+    margin: 0;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+}
+
+header{
+    padding: 1em;
+    background-color: #F59A06FF;
+    display: flex;
+    justify-content: space-between;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+}
