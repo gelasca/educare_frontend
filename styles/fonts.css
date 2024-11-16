@@ -1,0 +1,9 @@
+@font-face {
+    font-family: custom;
+    src: url(../../fonts/classica_3/Classica-Bold.ttf);
+}
+
+@font-face{
+    font-family: DM;
+    src: url(../fonts/DM_Serif_Display/DMSerifDisplay-Regular.ttf);
+}
