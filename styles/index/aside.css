@@ -1,0 +1,36 @@
+aside div.logo_educare{
+    display: flex;
+    justify-items: center;
+    height: 50%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* aside div.logo_educare *{
+    // margin: 0 auto;
+} */
+
+aside div.logo_educare h1{
+    text-align: center;
+    font-family: 'custom';
+    font-size: 40pt;
+    margin: 0;
+}
+
+aside div.logo_educare img{
+    /* margin: 0 auto; */
+    height: 60%;
+}
+
+aside div.quadro_imagens{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+}
+
+aside div.quadro_imagens *{
+    width: 80%;
+    height: 20em;
+}
