@@ -1,0 +1,43 @@
+
+    [
+        {
+            "id": 1,
+            "questao": "Com que frequência você se sente estressado(a)?"
+        },
+        {
+            "id": 2,
+            "questao": "Você tem dificuldade para dormir?"
+        },
+        {
+            "id": 3,
+            "questao": "Você tem se sentido ansioso(a) frequentemente?"
+        },
+        {
+            "id": 4,
+            "questao": "Sente-se sobrecarregado(a) com as demandas do dia a dia?"
+        },
+        {
+            "id": 5,
+            "questao": "Você consegue relaxar nas horas de descanso?"
+        },
+        {
+            "id": 6,
+            "questao": "Tem sentido falta de interesse pelas atividades diárias?"
+        },
+        {
+            "id": 7,
+            "questao": "Tem se sentido confiante em suas atividades?"
+        },
+        {
+            "id": 8,
+            "questao": "Tem dificuldades para se concentrar nas tarefas?"
+        },
+        {
+            "id": 9,
+            "questao": "Você sente apoio das pessoas ao seu redor?"
+        },
+        {
+            "id": 10,
+            "questao": "Tem praticado atividades que ajudem a reduzir o estresse?"
+        }
+    ]

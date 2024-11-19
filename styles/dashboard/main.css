@@ -10,28 +10,32 @@ main div.data_cards{
     justify-content: space-evenly;
 }
 
-main div.data_cards div{
+main div.data_cards div.caixa_numeros{
     border: 1px solid #F59A06FF;
-    padding: 2em;
+    padding: 1em;
     color: #000000FF;
     font-family: Arial, Helvetica, sans-serif;
     border-radius: 1em;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
+    width: 20%;
+    height: 100%;
+    justify-content: space-between;
 }
 
-main div.data_cards div div.numeros{
+main div.data_cards div.caixa_numeros div.numeros {
     display: flex;
+    margin-top: 1em;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 1em;
 }
 
 main div.secao_cnv{
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin-top: 2em;
 }
 
 main div.secao_cnv canvas{
