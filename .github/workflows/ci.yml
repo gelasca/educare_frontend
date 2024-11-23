@@ -1,26 +1,25 @@
-name: Pipeline CI
+name: CI Pipeline
 
 on:
-    push:
-        tags:
-            - 'v*'
+  push:
+    tags:
+      - 'v*'
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-
-        steps:
-        - name: Checkout Repository Files
-          uses: actions/checkout@v3
-        
-        - name: Docker Hub Login
-          env:
-            DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
-            DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
-          run: docker login -u=$DOCKER_USERNAME -p=$DOCKER_PASSWORD
-
-        - name: Build the Docker image
-          run: docker build -t ${{secrets.DOCKER_USERNAME}}/educare-frontend:${{github.ref_name}} -f httpd.Dockerfile .
-
-        - name: Push to Docker Hub
-          run: docker push $/educare-frontend
+  ci_job:
+    env:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      DOCKERFILE_PREFIX: ${{ vars.DOCKERFILE_PREFIX }}
+      IMAGE_NAME: ${{ vars.IMAGE_NAME }}
+      TAG_NAME: ${{ github.ref_name }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository Files
+      uses: actions/checkout@v3
+    - name: Docker Hub Login
+      run: docker login -u=$DOCKER_USERNAME -p=$DOCKER_PASSWORD
+    - name: Build the Docker image
+      run: docker build -t $DOCKER_USERNAME/$IMAGE_NAME:$TAG_NAME -f $DOCKERFILE_PREFIX.Dockerfile .
+    - name: Push to Docker Hub
+      run: docker push $DOCKER_USERNAME/$IMAGE_NAME:$TAG_NAME

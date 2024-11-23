@@ -29,11 +29,11 @@ function logar(){
     }
     switch (resultado) {
         case 2:{
-            window.location.href = 'http\:\/\/127.0.0.1:5500\/home_discente.html'
+            window.location.href = '.\/home_discente.html'
             break
         }    
         case -2:{
-            window.location.href = 'http\:\/\/127.0.0.1:5500\/home_docente.html'
+            window.location.href = '.\/home_docente.html'
             break
         }
         default:{

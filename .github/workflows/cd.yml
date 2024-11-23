@@ -1,0 +1,36 @@
+name: CD Pipeline
+
+on:
+  workflow_run:
+    workflows: ["CI Pipeline"]
+    types:
+      - completed
+
+jobs:
+  cd_job:
+    env:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      IMAGE_NAME: ${{ vars.IMAGE_NAME }}
+      PORT: ${{ vars.WEBSERVER_PORT }}
+      CONTAINER_NAME: ${{ vars.WEBSERVER_CONTAINER_NAME }}
+      HOST: ${{ vars.WEBSERVER_HOST }}
+    runs-on: self-hosted
+    steps:
+    - name: Get Last Tag and Assign to TAG_ENV
+      run: |
+        TAG_NAME=$(curl https://api.github.com/repos/gelasca/educare_frontend/tags | jq -r '.[0].name')
+        echo "TAG_NAME=${TAG_NAME}" >> $GITHUB_ENV
+    - name: Stop and Remove Container
+      run: |
+        trap 'echo "O container não existe no host." >&2' ERR
+        set -e
+        docker stop $CONTAINER_NAME && docker remove $CONTAINER_NAME
+    - name: Remove Last Image Version
+      run: |
+        trap 'echo "A imagem não existe no host." >&2' ERR
+        set -e
+        docker image remove $(docker images $DOCKER_USERNAME/$IMAGE_NAME --format "{{.Repository}}:{{.Tag}}" | head -n 1)
+    - name: Last Image Docker Pull
+      run: docker pull $DOCKER_USERNAME/$IMAGE_NAME:$TAG_NAME
+    - name: Last Image Docker Run
+      run: docker run -dit --name $CONTAINER_NAME --network host -p $HOST:$PORT:80 $DOCKER_USERNAME/$IMAGE_NAME:$TAG_NAME
