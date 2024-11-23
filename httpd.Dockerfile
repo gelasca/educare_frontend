@@ -1,5 +1,5 @@
 FROM httpd
-COPY ./fonts \
+COPY  ./fonts \
     ./images \
     ./scripts \
     ./styles \

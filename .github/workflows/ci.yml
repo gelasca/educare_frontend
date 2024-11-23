@@ -1,0 +1,26 @@
+name: Pipeline CI
+
+on:
+    push:
+        tags:
+            - 'v*'
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+        - name: Checkout Repository Files
+          uses: actions/checkout@v3
+        
+        - name: Docker Hub Login
+          env:
+            DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+            DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+          run: docker login -u=$DOCKER_USERNAME -p=$DOCKER_PASSWORD
+
+        - name: Build the Docker image
+          run: docker build -t ${{secrets.DOCKER_USERNAME}}/educare-frontend:${{github.ref_name}} -f httpd.Dockerfile .
+
+        - name: Push to Docker Hub
+          run: docker push $/educare-frontend
