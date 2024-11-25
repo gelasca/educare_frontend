@@ -20,17 +20,26 @@ jobs:
       run: |
         TAG_NAME=$(curl https://api.github.com/repos/gelasca/educare_frontend/tags | jq -r '.[0].name')
         echo "TAG_NAME=${TAG_NAME}" >> $GITHUB_ENV
-    - name: Stop and Remove Container
+    - name: Stop and Remove Container if Exists
       run: |
-        trap 'echo "O container não existe no host." >&2' ERR
-        set -e
-        docker stop $CONTAINER_NAME && docker remove $CONTAINER_NAME
-    - name: Remove Last Image Version
+        container=$(docker ps -a | awk -F ' ' '{print $2}' | grep -E '^gelascadocker/educare-frontend:v1.0$')
+        if [ $container == "gelascadocker/educare-frontend:v1.0" ]
+        then
+          echo "confere"
+          docker stop $CONTAINER_NAME && docker remove $CONTAINER_NAME
+        else
+          echo "There is no container $CONTAINER_NAME."
+        fi
+    - name: Remove Last Image Version if Exists
       run: |
-        trap 'echo "A imagem não existe no host." >&2' ERR
-        set -e
-        docker image remove $(docker images $DOCKER_USERNAME/$IMAGE_NAME --format "{{.Repository}}:{{.Tag}}" | head -n 1)
-    - name: Last Image Docker Pull
+        image=$(docker image ls | awk -F ' ' '{print $1":"$2}' | grep -E '^gelascadocker/educare-frontend:v1.0$')
+        if [ $image == "gelascadocker/educare-frontend:v1.0" ]
+        then
+          docker image remove $(docker images $DOCKER_USERNAME/$IMAGE_NAME --format "{{.Repository}}:{{.Tag}}" | head -n 1)
+        else
+          echo "There is no image $IMAGE_NAME."
+        fi
+    - name: Docker Pull Last Image
       run: docker pull $DOCKER_USERNAME/$IMAGE_NAME:$TAG_NAME
-    - name: Last Image Docker Run
+    - name: Docker Run Last Image
       run: docker run -dit --name $CONTAINER_NAME --network host -p $HOST:$PORT:80 $DOCKER_USERNAME/$IMAGE_NAME:$TAG_NAME
