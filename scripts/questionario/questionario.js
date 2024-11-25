@@ -19,11 +19,6 @@ async function fetchData(){
     }
 }
 
-// window.onload = function(){    
-//     console.log('fdfs')
-//     // alert('h')
-// }
-
 function mudaPergunta(){
     let alternativaMarcada
     alternativas_elem.forEach((elem)=>{
@@ -42,8 +37,7 @@ function mudaPergunta(){
             })
         }
         else{
-            // alert('acabou')
-            window.location.href = 'http://localhost/pos_questionario.html'
+            window.location.href = '.\/pos_questionario.html'
         }
         if(perguntaAtual == 9){
             botaoPergunta_elem.value = "Finalizar"
