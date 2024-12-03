@@ -8,21 +8,21 @@ function logar(){
     var senha = campoSenha.value
     console.log(usuario,senha)
     switch(usuario){
-        case 'aluno':{
+        case 'professor':{
             resultado++
             break
         }
-        case 'professor':{
+        case 'gestor':{
             resultado--
             break
         }
     }
     switch(senha){
-        case 'aluno123':{
+        case 'professor123':{
             resultado++
             break
         }
-        case 'professor123':{
+        case 'gestor123':{
             resultado--
             break
         }
