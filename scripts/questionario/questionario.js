@@ -43,7 +43,10 @@ function mudaPergunta(){
         }
         else{
             // alert('acabou')
-            window.location.href = 'http://127.0.0.1:5500/pos_questionario.html'
+            window.location.href = '../../pos_questionario.html';
+            //window.location.href = '../../pos_questionario.html';
+
+
         }
         if(perguntaAtual == 9){
             botaoPergunta_elem.value = "Finalizar"

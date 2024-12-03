@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
     <head>
         <title>Educare</title>
+        <meta charset="utf-8"/>
         <link rel="stylesheet" href="./styles/fonts.css">
         <link rel="stylesheet" href="./styles/home_discente/index.css">
         <link rel="stylesheet" href="./styles/home_discente/header.css">
@@ -11,7 +12,10 @@
     <body>
         <header>
             <h1>EDUCARE</h1>
-            <input type="button" value="Sair" onclick="window.location.href='http\:\/\/127.0.0.1:5500\/login.html'">
+            <a href="login.html">
+                <input type="button" value="Sair">
+            </a>
+            
         </header>
         <main>
             <div class="feature_card">
@@ -21,7 +25,9 @@
                     <h2>Responder Questionário</h2>
                     <h3>Conte-nos como está o seu andamento</h3>
                 </hgroup>
-                <input type="button" value="Responder"  onclick="window.location.href='http\:\/\/127.0.0.1:5500\/pre_questionario.html'">
+                <a href="pre_questionario.html">
+                    <input type="button" value="Responder" onclick="window.location.href='http\:\/\/localhost\/pre_questionario.html'">
+                </a>
             </div>
         </main>
     </body>

@@ -8,32 +8,32 @@ function logar(){
     var senha = campoSenha.value
     console.log(usuario,senha)
     switch(usuario){
-        case 'aluno':{
+        case 'professor':{
             resultado++
             break
         }
-        case 'professor':{
+        case 'gestor':{
             resultado--
             break
         }
     }
     switch(senha){
-        case 'aluno123':{
+        case 'professor123':{
             resultado++
             break
         }
-        case 'professor123':{
+        case 'gestor123':{
             resultado--
             break
         }
     }
     switch (resultado) {
         case 2:{
-            window.location.href = 'http\:\/\/127.0.0.1:5500\/home_discente.html'
+            window.location.href = '.\/home_discente.html'
             break
         }    
         case -2:{
-            window.location.href = 'http\:\/\/127.0.0.1:5500\/home_docente.html'
+            window.location.href = '.\/home_docente.html'
             break
         }
         default:{
